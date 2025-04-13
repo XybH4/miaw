@@ -732,8 +732,8 @@ Window:SelectTab(1);
 local AutoParry = Tabs.Main:AddToggle("AutoParry", {Title="Auto Parry", Default=true});
 AutoParry:OnChanged(function(v)
     if v then
-        -- Eksekusi skrip dari GitHub
-        loadstring(game:HttpGet('https://raw.githubusercontent.com/XybH4/miaw/refs/heads/main/miaw.lua'))()
+        
+--        loadstring(game:HttpGet('https://raw.githubusercontent.com/XybH4/miaw/refs/heads/main/miaw.lua'))()
         
         -- Aktifkan Auto Parry
         Connections_Manager["Auto Parry"] = RunService.PreSimulation:Connect(function()

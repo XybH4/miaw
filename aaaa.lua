@@ -733,7 +733,7 @@ local AutoParry = Tabs.Main:AddToggle("AutoParry", {Title="Auto Parry", Default=
 AutoParry:OnChanged(function(v)
     if v then
         
---        loadstring(game:HttpGet('https://raw.githubusercontent.com/XybH4/miaw/refs/heads/main/miaw.lua'))()
+        loadstring(game:HttpGet('https://raw.githubusercontent.com/XybH4/miaw/refs/heads/main/miaw.lua'))()
         
         -- Aktifkan Auto Parry
         Connections_Manager["Auto Parry"] = RunService.PreSimulation:Connect(function()

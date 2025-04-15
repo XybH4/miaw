@@ -68,8 +68,8 @@ local function hookRemote(remote)
                                 
                                 print("✅ Remote copied to clipboard!")
                                 game.StarterGui:SetCore("SendNotification", {
-                                    Title = "FROSTWARE",
-                                    Text = "Remote copied to clipboard!",
+                                    Title = "QuantumX",
+                                    Text = "Thanks For using Our hub!",
                                     Duration = 5,
                                 })
                             end
@@ -726,8 +726,8 @@ ManualSpam()
 local Fluent = loadstring(game:HttpGet("https://raw.githubusercontent.com/CodeE4X-dev/Library/refs/heads/main/FluentRemake.lua"))();
 local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))();
 local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))();
-local Window = Fluent:CreateWindow({Title="y4 Hub",SubTitle="Blade ball",TabWidth=160,Size=UDim2.fromOffset(500, 300),Acrylic=false,Theme="Dark Halloween",MinimizeKey=Enum.KeyCode.LeftControl});
-local Tabs = {Main=Window:AddTab({Title="Main",Icon="boxes"})};
+local Window = Fluent:CreateWindow({Title="QuantumX",SubTitle="Blade ball",TabWidth=160,Size=UDim2.fromOffset(500, 300),Acrylic=false,Theme="Midnight",MinimizeKey=Enum.KeyCode.LeftControl});
+local Tabs = {Main=Window:AddTab({Title="Main",Icon="swords"})};
 Window:SelectTab(1);
 local AutoParry = Tabs.Main:AddToggle("AutoParry", {Title="Auto Parry", Default=true});
 AutoParry:OnChanged(function(v)

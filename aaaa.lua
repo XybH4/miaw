@@ -66,10 +66,10 @@ local function hookRemote(remote)
                                 }
                                 setclipboard(game:GetService("HttpService"):JSONEncode(remoteData))
                                 
-                                print("✅ Remote copied to clipboard!")
+                                print("emm idk")
                                 game.StarterGui:SetCore("SendNotification", {
-                                    Title = "QuantumX",
-                                    Text = "Thanks For using Our hub!",
+                                    Title = "Hi",
+                                    Text = "gayyass",
                                     Duration = 5,
                                 })
                             end
@@ -726,77 +726,77 @@ ManualSpam()
 local Fluent = loadstring(game:HttpGet("https://raw.githubusercontent.com/CodeE4X-dev/Library/refs/heads/main/FluentRemake.lua"))();
 local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))();
 local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))();
-local Window = Fluent:CreateWindow({Title="QuantumX",SubTitle="Blade ball",TabWidth=160,Size=UDim2.fromOffset(500, 300),Acrylic=false,Theme="Midnight",MinimizeKey=Enum.KeyCode.LeftControl});
-local Tabs = {Main=Window:AddTab({Title="Main",Icon="swords"})};
+local Window = Fluent:CreateWindow({Title="QuantumX - Blade ball",SubTitle="",TabWidth=160,Size=UDim2.fromOffset(500, 300),Acrylic=false,Theme="Midnight",MinimizeKey=Enum.KeyCode.LeftControl});
+local Tabs = {Main=Window:AddTab({Title="Combat",Icon="swords"})};
 Window:SelectTab(1);
-local AutoParry = Tabs.Main:AddToggle("AutoParry", {Title="Auto Parry", Default=true});
+
+
+
+local AutoParry = Tabs.Main:AddToggle("AutoParry", {Title="Auto Parry",Default=true});
 AutoParry:OnChanged(function(v)
-    if v then
-        
-        loadstring(game:HttpGet('https://raw.githubusercontent.com/XybH4/miaw/refs/heads/main/miaw.lua'))()
-        
-        -- Aktifkan Auto Parry
-        Connections_Manager["Auto Parry"] = RunService.PreSimulation:Connect(function()
-            local One_Ball = Auto_Parry.Get_Ball();
-            local Balls = Auto_Parry.Get_Balls();
-            if (not Balls or (#Balls == 0)) then
-                return;
-            end
-            for _, Ball in pairs(Balls) do
-                if not Ball then
-                    return;
-                end
-                local Zoomies = Ball:FindFirstChild("zoomies");
-                if not Zoomies then
-                    return;
-                end
-                Ball:GetAttributeChangedSignal("target"):Once(function()
-                    Parried = false;
-                end);
-                if Parried then
-                    return;
-                end
-                local Ball_Target = Ball:GetAttribute("target");
-                local One_Target = One_Ball and One_Ball:GetAttribute("target");
-                local Velocity = Zoomies.VectorVelocity;
-                local character = LocalPlayer.Character;
-                if (not character or not character.PrimaryPart) then
-                    return;
-                end
-                local Distance = (character.PrimaryPart.Position - Ball.Position).Magnitude;
-                local Speed = Velocity.Magnitude;
-                local Ping = game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValue() / 10;
-                local Parry_Accuracy = (Speed / 3.25) + Ping;
-                local Curved = Auto_Parry.Is_Curved();
-                if ((Ball_Target == tostring(LocalPlayer)) and Aerodynamic) then
-                    local Elapsed_Tornado = tick() - Aerodynamic_Time;
-                    if (Elapsed_Tornado > 0.6) then
-                        Aerodynamic_Time = tick();
-                        Aerodynamic = false;
-                    end
-                    return;
-                end
-                if ((One_Target == tostring(LocalPlayer)) and Curved) then
-                    return;
-                end
-                if ((Ball_Target == tostring(LocalPlayer)) and (Distance <= Parry_Accuracy)) then
-                    Auto_Parry.Parry();
-                    Parried = true;
-                end
-                local Last_Parrys = tick();
-                while (tick() - Last_Parrys) < 1 do
-                    if not Parried then
-                        break;
-                    end
-                    task.wait();
-                end
-                Parried = false;
-            end
-        end);
-    elseif Connections_Manager["Auto Parry"] then
-        Connections_Manager["Auto Parry"]:Disconnect();
-        Connections_Manager["Auto Parry"] = nil;
-    end
+	if v then
+loadstring(game:HttpGet('https://raw.githubusercontent.com/XybH4/miaw/refs/heads/main/miaw.lua'))()
+		Connections_Manager["Auto Parry"] = RunService.PreSimulation:Connect(function()
+			local One_Ball = Auto_Parry.Get_Ball();
+			local Balls = Auto_Parry.Get_Balls();
+			if (not Balls or (#Balls == 0)) then
+				return;
+			end
+			for _, Ball in pairs(Balls) do
+				if not Ball then
+					return;
+				end
+				local Zoomies = Ball:FindFirstChild("zoomies");
+				if not Zoomies then
+					return;
+				end
+				Ball:GetAttributeChangedSignal("target"):Once(function()
+					Parried = false;
+				end);
+				if Parried then
+					return;
+				end
+				local Ball_Target = Ball:GetAttribute("target");
+				local One_Target = One_Ball and One_Ball:GetAttribute("target");
+				local Velocity = Zoomies.VectorVelocity;
+				local character = LocalPlayer.Character;
+				if (not character or not character.PrimaryPart) then
+					return;
+				end
+				local Distance = (character.PrimaryPart.Position - Ball.Position).Magnitude;
+				local Speed = Velocity.Magnitude;
+				local Ping = game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValue() / 10;
+				local Parry_Accuracy = (Speed / 3.25) + Ping;
+				local Curved = Auto_Parry.Is_Curved();
+				if ((Ball_Target == tostring(LocalPlayer)) and Aerodynamic) then
+					local Elapsed_Tornado = tick() - Aerodynamic_Time;
+					if (Elapsed_Tornado > 0.6) then
+						Aerodynamic_Time = tick();
+						Aerodynamic = false;
+					end
+					return;
+				end
+				if ((One_Target == tostring(LocalPlayer)) and Curved) then
+					return;
+				end
+				if ((Ball_Target == tostring(LocalPlayer)) and (Distance <= Parry_Accuracy)) then
+					Auto_Parry.Parry();
+					Parried = true;
+				end
+				local Last_Parrys = tick();
+				while (tick() - Last_Parrys) < 1 do
+					if not Parried then
+						break;
+					end
+					task.wait();
+				end
+				Parried = false;
+			end
+		end);
+	elseif Connections_Manager["Auto Parry"] then
+		Connections_Manager["Auto Parry"]:Disconnect();
+		Connections_Manager["Auto Parry"] = nil;
+	end
 end);
 local AutoSpam = Tabs.Main:AddToggle("AutoSpam", {Title="Auto Spam",Default=true});
 local autoSpamCoroutine = nil;
@@ -870,4 +870,3 @@ local Toggle = Tabs.Main:AddToggle("MyToggle",
         ManualSpam()
     end 
 })
-

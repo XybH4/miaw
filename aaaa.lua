@@ -870,3 +870,15 @@ local Toggle = Tabs.Main:AddToggle("MyToggle",
         ManualSpam()
     end 
 })
+
+
+local Dropdown = Tabs.Main:AddDropdown("Dropdown", {
+    Title = "Curve ",
+    Description = "Curve Method",
+    Values = {"Random", "Backwards","Up"},
+    Multi = false,
+    Default = 3,
+    Callback = function()
+       print('ji')
+    end
+})

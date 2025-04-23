@@ -732,25 +732,24 @@ Window:SelectTab(1);
 
 
 
-local AutoParry = Tabs.Main:AddToggle("AutoParry", {Title="Auto Parry",Default=true});
+local AutoParry = Tabs.Main:AddToggle("AutoParry", {Title = "Auto Parry", Default = true})
+
 AutoParry:OnChanged(function(v)
 	if v then
-        loadstring(game:HttpGet('https://raw.githubusercontent.com/XybH4/miaw/refs/heads/main/miaw.lua'))()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/XybH4/miaw/refs/heads/main/miaw.lua"))()
 
 		Connections_Manager["Auto Parry"] = RunService.PreSimulation:Connect(function()
-			local One_Ball = Auto_Parry.Get_Ball();
-			local Balls = Auto_Parry.Get_Balls();
-			if (not Balls or (#Balls == 0)) then
-				return;
-			end
+			local One_Ball = Auto_Parry.Get_Ball()
+			local Balls = Auto_Parry.Get_Balls()
+
+			if not Balls or #Balls == 0 then return end
+
 			for _, Ball in pairs(Balls) do
-				if not Ball then
-					return;
-				end
-				local Zoomies = Ball:FindFirstChild("zoomies");
-				if not Zoomies then
-					return;
-				end
+				if not Ball then continue end
+
+				local Zoomies = Ball:FindFirstChild("zoomies")
+				if not Zoomies then continue end
+
 				Ball:GetAttributeChangedSignal("target"):Once(function()
 					Parried = false;
 				end);

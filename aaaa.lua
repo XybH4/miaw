@@ -797,7 +797,8 @@ AutoParry:OnChanged(function(v)
 		Connections_Manager["Auto Parry"]:Disconnect();
 		Connections_Manager["Auto Parry"] = nil;
 	end
-end);
+end)
+
 local AutoSpam = Tabs.Main:AddToggle("AutoSpam", {Title="Auto Spam",Default=true});
 local autoSpamCoroutine = nil;
 local targetPlayer = nil;

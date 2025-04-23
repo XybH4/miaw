@@ -884,15 +884,7 @@ local Dropdown = Tabs.Main:AddDropdown("Dropdown", {
 })
 
 
-local Toggle = Tabs.Main:AddToggle("MyToggle", 
-{
-    Title = "Visualizer", 
-    Description = "",
-    Default = false,
-    Callback = function()
-        visualizerEnabled = state
-    end 
-})
+
 
 
 local Players = game:GetService("Players")

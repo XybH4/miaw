@@ -735,7 +735,8 @@ Window:SelectTab(1);
 local AutoParry = Tabs.Main:AddToggle("AutoParry", {Title="Auto Parry",Default=true});
 AutoParry:OnChanged(function(v)
 	if v then
- loadstring(game:HttpGet('https://raw.githubusercontent.com/XybH4/miaw/refs/heads/main/miaw.lua'))()
+        loadstring(game:HttpGet('https://raw.githubusercontent.com/XybH4/miaw/refs/heads/main/miaw.lua'))()
+
 		Connections_Manager["Auto Parry"] = RunService.PreSimulation:Connect(function()
 			local One_Ball = Auto_Parry.Get_Ball();
 			local Balls = Auto_Parry.Get_Balls();
@@ -882,3 +883,140 @@ local Dropdown = Tabs.Main:AddDropdown("Dropdown", {
        print('ji')
     end
 })
+
+
+local Toggle = Tabs.Main:AddToggle("MyToggle", 
+{
+    Title = "Visualizer", 
+    Description = "",
+    Default = false,
+    Callback = function()
+        visualizerEnabled = state
+    end 
+})
+
+
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+
+local AutoFarm = false
+local AutoFarmType = "UnderBall"
+local AutoFarmOrbit = 7
+local AutoFarmHeight = 20
+local AutoFarmRadius = 20
+local AutoFarmConnection = nil
+
+
+local AutoFarmComplexity = 1
+
+local function get_ball()
+    local balls = workspace:FindFirstChild("Balls")
+    return balls and balls:FindFirstChildWhichIsA("Part", true) or nil
+end
+
+local function get_humanoid_root_part(player)
+    return player.Character and player.Character:FindFirstChild("HumanoidRootPart")
+end
+
+local function autofarm()
+    local player = Players.LocalPlayer
+    local ball = get_ball()
+    local rootPart = get_humanoid_root_part(player)
+
+    if not ball or not rootPart then return end
+
+    local position = ball.Position
+    local angle = tick() * math.pi * 2 / (AutoFarmOrbit / 5)
+    local time = tick()
+
+    if AutoFarmType == "UnderBall" then
+        rootPart.CFrame = CFrame.new(position - Vector3.new(0, AutoFarmHeight, 0))
+    elseif AutoFarmType == "X Orbit" then
+        rootPart.CFrame = CFrame.new(position + Vector3.new(
+            math.cos(angle) * AutoFarmRadius,
+            0,
+            math.sin(angle) * AutoFarmRadius
+        ))
+    elseif AutoFarmType == "Y Orbit" then
+        rootPart.CFrame = CFrame.new(position + Vector3.new(
+            0,
+            math.sin(angle) * AutoFarmRadius,
+            math.cos(angle) * AutoFarmRadius
+        ))
+
+    elseif AutoFarmType == "Z Orbit" then
+        rootPart.CFrame = CFrame.new(position + Vector3.new(
+            math.cos(angle) * AutoFarmRadius,
+            math.sin(angle) * AutoFarmRadius,
+            0
+        ))
+    elseif AutoFarmType == "Helix" then
+        rootPart.CFrame = CFrame.new(position + Vector3.new(
+            math.cos(angle) * AutoFarmRadius,
+            math.sin(time * AutoFarmComplexity) * AutoFarmHeight,
+            math.sin(angle) * AutoFarmRadius
+        ))
+    elseif AutoFarmType == "Figure8" then
+        rootPart.CFrame = CFrame.new(position + Vector3.new(
+            math.cos(angle) * AutoFarmRadius,
+            0,
+            math.sin(2 * angle) * (AutoFarmRadius / 2)
+        ))
+    elseif AutoFarmType == "Spiral" then
+        local spiralRadius = AutoFarmRadius * (1 + math.sin(time * 0.5))
+        rootPart.CFrame = CFrame.new(position + Vector3.new(
+            math.cos(angle) * spiralRadius,
+            time % AutoFarmHeight,
+            math.sin(angle) * spiralRadius
+        ))
+    elseif AutoFarmType == "Random Orbit" then
+        rootPart.CFrame = CFrame.new(position + Vector3.new(
+            math.noise(time) * AutoFarmRadius,
+            math.noise(time + 10) * AutoFarmHeight,
+            math.noise(time + 20) * AutoFarmRadius
+        ))
+    end
+end
+
+
+local function startAutoFarm()
+    if AutoFarmConnection then
+        AutoFarmConnection:Disconnect()
+        AutoFarmConnection = nil
+    end
+
+    AutoFarmConnection = RunService.Heartbeat:Connect(function()
+        if AutoFarm then
+            local success, err = pcall(autofarm)
+            if not success then
+                warn("AutoFarm Error:", err)
+            end
+        end
+    end)
+end
+
+Tabs.Main:AddToggle("AutoFarmToggle", {
+    Title = "Auto Farm",
+    Description = "",
+    Default = AutoFarm,
+    Callback = function(state)
+        AutoFarm = state
+        if AutoFarm then
+            startAutoFarm()
+        elseif AutoFarmConnection then
+            AutoFarmConnection:Disconnect()
+            AutoFarmConnection = nil
+        end
+    end
+})
+
+Tabs.Main:AddDropdown("AutoFarmMode", {
+    Title = "Farming Mode",
+    Description = "Select farming Mode",
+    Values = {"X Orbit", "Y Orbit", "Z Orbit"},
+    Default = AutoFarmType,
+    Callback = function(value)
+        AutoFarmType = value
+    end
+})
+

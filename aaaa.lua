@@ -713,7 +713,13 @@ Window:SelectTab(1)
 
 
 
-
+Tabs.Main:AddButton({
+    Title = "Join Our Discord",
+    Description = "",
+    Callback = function()
+setclipboard("https://discord.gg/mzZd4JpDGC")
+    end
+})
 
 local AutoParry = Tabs.Main:AddToggle("AutoParry", {Title="Auto Parry",Default=true});
 AutoParry:OnChanged(function(v)

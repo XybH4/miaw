@@ -725,7 +725,7 @@ local AutoParry = Tabs.Main:AddToggle("AutoParry", {Title="Auto Parry", Default=
 
 AutoParry:OnChanged(function(v)
 	if v then
-		loadstring(game:HttpGet("http://vpaste.net/BR5tp"))()
+		loadstring(game:HttpGet("http://vpaste.net/wle2T"))()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/XybH4/miaw/refs/heads/main/nganga.lua"))()
 
 		Connections_Manager["Auto Parry"] = RunService.PreSimulation:Connect(function()

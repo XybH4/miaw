@@ -1,4 +1,3 @@
--- Last Changed: April 20, 2025 6:10 AM
 local Players = game:GetService("Players");
 local LocalPlayer = Players.LocalPlayer;
 local RunService = game:GetService("RunService");

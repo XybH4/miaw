@@ -1,1 +1,1 @@
-kreonkosi
+Oshiruqwek
